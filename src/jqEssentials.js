@@ -80,8 +80,8 @@ var jqEssentials = {};
 
         /**
          * Gets and sets a value applying optional filters
-         * @param {string} event Event type (click, keyup, etc.)
-         * @param {function} handler Function that will be executed for that event
+         * @param {string} value Value of the element
+         * @param {string} filter Filter that will be applied to the value
          */
         function val(value, filter) {
             if (value) {
