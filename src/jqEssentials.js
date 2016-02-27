@@ -80,15 +80,15 @@ var jqEssentials = {};
 
         /**
          * Gets and sets a value applying optional filters
-         * @param {string} value Value of the element
-         * @param {string} filter Filter that will be applied to the value
+         * @param {string} value String Value
+         * @param {string} filter Filter function
          */
         function val(value, filter) {
-            if (value) {
+            if (value || value === '' || value === null) {
                 if (filter) {
-                    el.value = filters[filter](value);
+                    el.value = filters[filter](value || '');
                 } else {
-                    el.value = value;
+                    el.value = value || '';
                 }
             } else {
                 return el.value;
