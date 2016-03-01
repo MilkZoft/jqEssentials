@@ -75,7 +75,9 @@ var jqEssentials = {};
          * @param {function} handler Function that will be executed for that event
          */
         function on(event, handler) {
-            el.addEventListener(event, handler, false);
+            if (el) {
+                el.addEventListener(event, handler, false);
+            }
         }
 
         /**
