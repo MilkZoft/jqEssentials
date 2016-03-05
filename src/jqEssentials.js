@@ -38,6 +38,7 @@ var jqEssentials = {};
         // Public Methods
         return {
             addClass: addClass,
+            removeClass: removeClass,
             each: each,
             on: on,
             val: val
@@ -50,6 +51,16 @@ var jqEssentials = {};
         function addClass(className) {
             if (!el.classList.contains(className)) {
                 el.className += ' ' + className;
+            }
+        }
+
+        /**
+         * Removes a class
+         * @param {string} className Name of the class
+         */
+        function removeClass(className) {
+            if (el.classList.contains(className)) {
+                el.classList.remove(className);
             }
         }
 
@@ -75,7 +86,13 @@ var jqEssentials = {};
          * @param {function} handler Function that will be executed for that event
          */
         function on(event, handler) {
-            if (el) {
+            if (el.length > 1) {
+                var i;
+
+                for (i = 0; i < el.length; i++) {
+                    el[i].addEventListener(event, handler, false);
+                }
+            } else if (el) {
                 el.addEventListener(event, handler, false);
             }
         }
